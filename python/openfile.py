@@ -1,14 +1,7 @@
-#_*_ coding:utf-8 _*_
-open_file = open("python.txt",'a+')
-#open_file.write("open file in python")
-readfile = open_file.read()
-print readfile
-print open_file.tell()
-readline_file = open_file.readlines()
-try:
-    print "readline ok"
-    for line in readline_file :
-        print line
-except:
-    print "readline error "
-open_file.close()
+with open("python.txt",'r', encoding="utf-8") as file:
+	try:
+		res = [line.strip() for line in file.readlines()]
+		print(res)
+		print("Read line ok")
+	except FileNotFoundError:
+		print("Readline error, file does not exist.")
